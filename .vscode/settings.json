@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
         "wtforms"
-    ]
+    ],
+    "python.testing.unittestEnabled": true,
+    "testing.alwaysRevealTestOnStateChange": true
 }
