@@ -3,5 +3,14 @@
         "wtforms"
     ],
     "python.testing.unittestEnabled": true,
-    "testing.alwaysRevealTestOnStateChange": true
+    "testing.alwaysRevealTestOnStateChange": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:Flask_Web_Dev_2e_Book_Code}/data-dev.sqlite",
+            "name": "Flasky"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
 }
