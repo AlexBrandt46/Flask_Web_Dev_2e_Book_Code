@@ -19,7 +19,7 @@ def login():
             login_user(user, form.remember_me.data)
             next = request.args.get('next')
 
-            if next is None or not next.startsWith('/'):
+            if next is None or not next.startswith('/'):
                 next = url_for('main.index')
 
             return redirect(next)
@@ -92,11 +92,13 @@ def before_request():
         Access to the authentication routes needs to be granted, as those are the routes that will enable
         the user to confirm the account or perform other account management functions.
     """
-    if current_user.is_authenticated \
-    and not current_user.confirmed \
-    and request.blueprint != 'auth' \
-    and request.endpoint != 'static':
-        return redirect(url_for('auth.unconfirmed'))
+    if current_user.is_authenticated:
+        current_user.ping()
+    
+        if not current_user.confirmed \
+            and request.blueprint != 'auth' \
+            and request.endpoint != 'static':
+                return redirect(url_for('auth.unconfirmed'))
 
 @auth.route('/unconfirmed')
 def unconfirmed():
