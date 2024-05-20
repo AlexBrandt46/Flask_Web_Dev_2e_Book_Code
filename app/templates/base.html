@@ -6,6 +6,7 @@
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 {% endblock %}
 
 {% block navbar %}
@@ -32,15 +33,30 @@
                 </li>
                 {% endif %}
             </ul>
+            <!-- TODO: Finish the last of chapter 10 code to add the user profile picture to the page header and database -->
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                    <li>
-                        <a href="{{ url_for('auth.logout') }}">Log Out</a>
-                    </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{ current_user.gravatar(size=18) }}">
+                        Account <b class="caret">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ url_for('auth.change_password') }}">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('auth.change_email_request') }}">Change Email</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('auth.logout') }}">Log Out</a>
+                        </li>
+                    </ul>
+                </li>
                 {% else %}
-                    <li>
-                        <a href="{{ url_for('auth.login') }}">Log In</a>
-                    </li>
+                <li>
+                    <a href="{{ url_for('auth.login') }}">Log In</a>
+                </li>
                 {% endif %}
             </ul>
         </div>
