@@ -33,13 +33,12 @@
                 </li>
                 {% endif %}
             </ul>
-            <!-- TODO: Finish the last of chapter 10 code to add the user profile picture to the page header and database -->
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ current_user.gravatar(size=18) }}">
-                        Account <b class="caret">
+                        Account <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
